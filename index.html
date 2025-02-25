@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <!-- Add Jura font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Font Awesome for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main content area -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="task-header">
+                    <div class="input-group">
+                        <input type="text" id="todo-input" placeholder="Add a new task...">
+                        <select id="task-group" title="Select task group">
+                            <option value="none">No Group</option>
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                        </select>
+                        <button id="add-button" title="Add task"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                </div>
+                
+                <div class="content-area">
+                    <!-- Active Tasks Table -->
+                    <div class="tab-content active" id="active-tasks">
+                        <h2>Active Tasks</h2>
+                        <table class="task-table" id="active-table">
+                            <thead>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Group</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="active-list">
+                                <!-- Tasks will be added here dynamically -->
+                                <tr>
+                                    <td>Example active task</td>
+                                    <td><span class="group-badge none">None</span></td>
+                                    <td class="task-actions">
+                                        <button class="complete-btn" title="Mark as complete"><i class="fas fa-check"></i></button>
+                                        <button class="delete-btn" title="Delete task"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Grouped Tasks -->
+                    <div class="tab-content" id="grouped-tasks">
+                        <h2>Grouped Tasks</h2>
+                        <div class="group-container">
+                            <div class="group" data-group="work">
+                                <h3><i class="fas fa-briefcase"></i> Work</h3>
+                                <table class="task-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Task</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="work-list">
+                                        <!-- Work tasks will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="group" data-group="personal">
+                                <h3><i class="fas fa-user"></i> Personal</h3>
+                                <table class="task-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Task</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="personal-list">
+                                        <!-- Personal tasks will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="group" data-group="shopping">
+                                <h3><i class="fas fa-shopping-cart"></i> Shopping</h3>
+                                <table class="task-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Task</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="shopping-list">
+                                        <!-- Shopping tasks will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="group" data-group="health">
+                                <h3><i class="fas fa-heartbeat"></i> Health</h3>
+                                <table class="task-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Task</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="health-list">
+                                        <!-- Health tasks will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Completed Tasks -->
+                    <div class="tab-content" id="completed-tasks">
+                        <div class="completed-header">
+                            <h2>Completed Tasks</h2>
+                            <button id="clear-completed" title="Clear all completed tasks"><i class="fas fa-broom"></i> Clear All</button>
+                        </div>
+                        <table class="task-table">
+                            <thead>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="completed-list">
+                                <!-- Completed tasks will be added here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Sidebar navigation -->
+        <aside class="sidebar">
+            <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="sidebar-header">
+                <h1>Task Manager</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="active">
+                    <i class="fas fa-tasks"></i>
+                    <span>Active Tasks</span>
+                </button>
+                <button class="nav-btn" data-tab="grouped">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Grouped Tasks</span>
+                </button>
+                <button class="nav-btn" data-tab="completed">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completed Tasks</span>
+                </button>
+            </nav>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
