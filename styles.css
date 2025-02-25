@@ -1,11 +1,14 @@
 /* Base styles */
 body {
-    font-family: 'Jura', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
     background-color: #0D1821;
     color: #cecece;
     margin: 0;
     padding: 0;
     height: 100vh;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    line-height: 1.5;
 }
 
 /* App container layout */
@@ -119,9 +122,31 @@ body {
 
 .sidebar-header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #cecece;
     transition: opacity 0.3s ease;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #344966;
+    transform: scaleX(0.7);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header:hover h1::after {
+    transform: scaleX(1);
 }
 
 .sidebar.collapsed .sidebar-header {
@@ -152,6 +177,8 @@ body {
     border-left: 3px solid transparent;
     white-space: nowrap;
     overflow: hidden;
+    letter-spacing: 0.02em;
+    font-weight: 500;
 }
 
 .nav-btn i {
@@ -205,6 +232,12 @@ body {
     max-width: 800px;
     position: relative;
     border: 1px solid rgba(52, 73, 102, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .task-header::before {
@@ -216,8 +249,9 @@ body {
     color: #cecece;
     padding: 5px 15px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
 .input-group {
@@ -231,16 +265,20 @@ body {
     padding: 15px;
     border: 1px solid #344966;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     transition: all 0.3s;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
     background-color: #0F1923;
     color: #cecece;
-    font-family: 'Jura', sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
+    letter-spacing: 0.01em;
+    font-weight: 300;
 }
 
 #todo-input::placeholder {
     color: #6c7983;
+    font-weight: 300;
+    opacity: 0.7;
 }
 
 #todo-input:focus {
@@ -253,14 +291,15 @@ body {
     padding: 15px;
     border: 1px solid #344966;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     background-color: #0F1923;
     color: #cecece;
     cursor: pointer;
     transition: all 0.3s;
     min-width: 140px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-    font-family: 'Jura', sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
+    letter-spacing: 0.01em;
 }
 
 #task-group:focus {
@@ -276,7 +315,7 @@ body {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     transition: all 0.3s;
     display: flex;
@@ -284,7 +323,8 @@ body {
     gap: 8px;
     white-space: nowrap;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    font-family: 'Jura', sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
+    letter-spacing: 0.02em;
 }
 
 #add-button:hover {
@@ -341,12 +381,15 @@ body {
 
 h2 {
     color: #cecece;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-top: 0;
     margin-bottom: 25px;
     padding-bottom: 15px;
     border-bottom: 1px solid #344966;
     position: relative;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 h2::after {
@@ -358,6 +401,11 @@ h2::after {
     height: 3px;
     background-color: #344966;
     border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+h2:hover::after {
+    width: 100px;
 }
 
 h3 {
@@ -367,6 +415,9 @@ h3 {
     align-items: center;
     gap: 8px;
     color: #cecece;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Task tables */
@@ -385,18 +436,43 @@ h3 {
     background-color: #344966;
     padding: 15px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 500;
     color: #cecece;
     border-bottom: 2px solid #1E2C39;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .task-table tbody tr {
     border-bottom: 1px solid #1E2C39;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Remove the general hover effect */
 .task-table tbody tr:hover {
-    background-color: rgba(52, 73, 102, 0.15);
+    background-color: transparent;
+}
+
+.task-table tbody tr:hover::before {
+    content: none;
+}
+
+/* Remove hover effects from active and completed task tables */
+#active-table tbody tr:hover,
+#completed-list tr:hover {
+    background-color: transparent;
+}
+
+#active-table tbody tr:hover::before,
+#completed-list tr:hover::before {
+    content: none;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
 }
 
 .task-table tbody tr:last-child {
@@ -425,6 +501,7 @@ h3 {
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.01em;
 }
 
 .group-badge.none {
@@ -496,11 +573,11 @@ h3 {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
     margin-top: 15px;
     border: 1px solid rgba(52, 73, 102, 0.3);
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .group::before {
@@ -514,9 +591,10 @@ h3 {
     opacity: 0.5;
 }
 
+/* Add hover effect to group (same as task-header) */
 .group:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .group[data-group="work"] h3 {
@@ -577,12 +655,14 @@ h3 {
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 500;
     transition: all 0.3s;
     display: flex;
     align-items: center;
     gap: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    font-family: 'Jura', sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
+    letter-spacing: 0.02em;
 }
 
 #clear-completed:hover {
@@ -610,6 +690,7 @@ h3 {
     border-radius: 8px;
     margin: 20px 0;
     border: 1px dashed rgba(52, 73, 102, 0.3);
+    font-weight: 300;
 }
 
 /* Animations */
@@ -700,4 +781,10 @@ h3 {
     #task-group, #add-button {
         width: 100%;
     }
+}
+
+/* Remove the special first-letter style that was specific to Cinzel */
+.sidebar-header h1::first-letter {
+    font-size: inherit;
+    color: inherit;
 } 
